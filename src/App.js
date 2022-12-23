@@ -1,0 +1,36 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Main from "./Layout/Main";
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path:"/login",
+        element: <Login/>
+      },
+      {
+        path:"/register",
+        element: <Register/>
+      },
+    ],
+  },
+]);
+function App() {
+  return (
+    <div className="lg:w-[1240px] mx-auto">
+      <RouterProvider router={router}></RouterProvider>
+    </div>
+  );
+}
+
+export default App;
