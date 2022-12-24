@@ -9,8 +9,9 @@ const Register = () => {
         <div className="lg:w-1/2 flex justify-end">
           <img src={LoginBanner} alt="" className="w-[500px] rounded-lg" />
         </div>
-        <div className="lg:w-1/2 flex justify-center">
-          <form className="lg:w-1/2">
+        <div className="lg:w-1/2">
+        <h1 className="font-bold text-primary text-2xl">Register</h1>
+          <form className="lg:w-1/2 flex flex-col justify-center">
             <div className="form-control w-full max-w-xs mb-2">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -50,7 +51,7 @@ const Register = () => {
             </div>
             <p className="text-center mt-3">
               Already have an account?{" "}
-              <Link className="hover:text-pink-300 text-primary underline">
+              <Link to={'/login'} className="hover:text-pink-300 text-primary underline">
                 Login
               </Link>
             </p>

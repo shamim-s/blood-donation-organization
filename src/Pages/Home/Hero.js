@@ -1,6 +1,6 @@
 import React from "react";
 import Banner1 from "../.././Images/6262-01.svg";
-import { Typewriter } from 'react-simple-typewriter'
+import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
   return (

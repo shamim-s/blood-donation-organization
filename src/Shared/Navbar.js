@@ -32,12 +32,9 @@ const Navbar = () => {
             <li>
               <Link to={"/login"}>Login</Link>
             </li>
-            <li>
-              <Link to={'/register'}>Register</Link>
-            </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-white lg:text-primary">Blood</a>
+        <Link to={'/'} className="btn btn-ghost normal-case font-bold text-xl text-white lg:text-primary">BDO</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-primary font-semibold tracking-normal antialiased">
@@ -46,9 +43,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link to={"/login"}>Login</Link>
-          </li>
-          <li>
-            <Link to={'/register'}>Register</Link>
           </li>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
