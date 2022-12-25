@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from '../../components/Spinner/Spinner';
 import Footer from '../../Shared/Footer';
 import Hero from './Hero';
 

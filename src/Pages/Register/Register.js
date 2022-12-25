@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import LoginBanner from "../.././Images/LoginImage1-01.svg";
 import Gicon from "../.././Images/Google.png";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/Context";
 import { toast } from "react-hot-toast";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const { createNewUser, setUser, updateUser } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
 
   const handleRegister = (data, event) => {
     event.preventDefault();
 
+    setLoading(true);
     const name = data.name;
     const email = data.email;
     const password = data.password;
@@ -25,6 +28,7 @@ const Register = () => {
       .then(() => {
         setUser(user);
         toast.success("Registration Success");
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -33,6 +37,7 @@ const Register = () => {
     })
     .catch((err) => {
       console.log(err);
+      setLoading(false);
       toast.error(err.message);
     })
   };
@@ -83,7 +88,11 @@ const Register = () => {
               className="input input-bordered input-primary w-full max-w-xs"
             />
           </div>
-          <button className="btn btn-primary w-full max-w-xs">Register</button>
+          <button className="btn btn-primary w-full max-w-xs">
+            {
+              loading ? <Spinner/> : 'Register'
+            }
+          </button>
           <div className="divider">OR</div>
           <div className="w-full flex justify-center items-center">
             <img src={Gicon} className="w-8 cursor-pointer" alt="" />
