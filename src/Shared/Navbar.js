@@ -44,7 +44,7 @@ const Navbar = () => {
             </li>
             {
               user?.email ?
-              <p className="">Logout</p>
+              <li><p onClick={handleLogout} className="">Logout</p></li>
               : 
             <li>
               <Link to={"/login"}>Login</Link>
@@ -59,14 +59,12 @@ const Navbar = () => {
           <li>
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
-          {
-              user?.email ?
-              <p onClick={handleLogout} className="">Logout</p>
+            {
+              user?.uid ?
+              <li><p onClick={handleLogout} className="">Logout</p></li>
              : 
-              <Link to={"/login"}>Login</Link>
+              <li><Link to={"/login"}>Login</Link></li>
             }
-          </li>
           {
             user && <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
