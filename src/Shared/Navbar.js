@@ -42,6 +42,9 @@ const Navbar = () => {
             <li>
               <Link to={"/"}>Home</Link>
             </li>
+            <li>
+            <Link to={"/"}>All Donor</Link>
+          </li>
             {
               user?.email ?
               <li><p onClick={handleLogout} className="">Logout</p></li>
@@ -58,6 +61,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-primary font-semibold tracking-normal antialiased">
           <li>
             <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/"}>All Donor</Link>
           </li>
             {
               user?.uid ?

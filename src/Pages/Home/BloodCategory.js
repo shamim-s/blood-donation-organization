@@ -19,9 +19,9 @@ const BloodCategory = () => {
         {
           bloodCategory.map(blood => <div 
           key={blood._id}
-          className="mx-auto w-16 h-16 bg-primary rounded-lg flex justify-center items-center"
+          className="cursor-pointer hover:bg-white hover:border-2 hover:border-primary hover:rounded-lg hover:text-primary mx-auto w-16 h-16 text-white bg-neutral rounded-lg flex justify-center items-center transition-all"
           >
-            <h1 className="text-2xl text-white font-semibold">{blood.bloodGroup}</h1>
+            <h1 className="text-2xl font-semibold">{blood.bloodGroup}</h1>
           </div>)
         }
       </div>

@@ -29,7 +29,7 @@ const Hero = () => {
             a id nisi.
           </p>
           <p className="lg:text-left text-center">
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary font-bold text-white">Donate Blood</button>
           </p>
         </div>
       </div>
