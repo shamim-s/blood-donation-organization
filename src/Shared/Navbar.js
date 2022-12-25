@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/Context";
+import { HiLogout } from "react-icons/hi";
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="navbar flex justify-between lg:bg-white bg-primary text-white">
       <div className="navbar-start">
@@ -29,9 +33,14 @@ const Navbar = () => {
             <li>
               <Link to={"/"}>Home</Link>
             </li>
+            {
+              user.email ?
+              <p className="">Logout</p>
+              : 
             <li>
               <Link to={"/login"}>Login</Link>
             </li>
+            }
           </ul>
         </div>
         <Link to={'/'} className="btn btn-ghost normal-case font-bold text-xl text-white lg:text-primary">BDO</Link>
@@ -42,13 +51,24 @@ const Navbar = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to={"/login"}>Login</Link>
+          {
+              user.email ?
+              <p className="">Logout</p>
+             : 
+              <Link to={"/login"}>Login</Link>
+            }
           </li>
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          {
+            user && <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
+              {
+                user?.photoURL ? <img src={user.photoURL} alt=""/> 
+                :
+                <img src="https://placeimg.com/80/80/people" />
+              }
             </div>
           </label>
+          }
         </ul>
       </div>
     </div>
