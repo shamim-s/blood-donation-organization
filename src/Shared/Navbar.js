@@ -1,11 +1,20 @@
 import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
-import { HiLogout } from "react-icons/hi";
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
-  console.log(user);
+  const {user, logoutUser} = useContext(AuthContext);
+  const handleLogout = () => {
+    logoutUser()
+    .then(() => {
+      toast.success('Logged out');
+    })
+    .catch((err) => {
+      console.log(err);
+      toast.error('Logout failed');
+    })
+  }
   return (
     <div className="navbar flex justify-between lg:bg-white bg-primary text-white">
       <div className="navbar-start">
@@ -34,7 +43,7 @@ const Navbar = () => {
               <Link to={"/"}>Home</Link>
             </li>
             {
-              user.email ?
+              user?.email ?
               <p className="">Logout</p>
               : 
             <li>
@@ -52,8 +61,8 @@ const Navbar = () => {
           </li>
           <li>
           {
-              user.email ?
-              <p className="">Logout</p>
+              user?.email ?
+              <p onClick={handleLogout} className="">Logout</p>
              : 
               <Link to={"/login"}>Login</Link>
             }
