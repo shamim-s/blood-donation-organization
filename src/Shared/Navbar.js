@@ -1,19 +1,25 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/Context";
 
 const Navbar = () => {
-  const {user, logoutUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const {user, logoutUser, setUser} = useContext(AuthContext);
   const handleLogout = () => {
     logoutUser()
     .then(() => {
       toast.success('Logged out');
+      setUser({});
     })
     .catch((err) => {
       console.log(err);
       toast.error('Logout failed');
     })
+  };
+
+  const handleNavigetProfile = (user) => {
+    navigate(`/users/${user.email}`);
   }
   return (
     <div className="navbar flex justify-between lg:bg-white bg-primary text-white">
@@ -73,13 +79,13 @@ const Navbar = () => {
             }
           {
             user && <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <Link to={`/users/${user.email}`}  className="w-10 rounded-full">
               {
-                user?.photoURL ? <img src={user.photoURL} alt=""/> 
+                user?.photoURL ? <img className="rounded-full" src={user.photoURL} alt=""/> 
                 :
-                <img src="https://placeimg.com/80/80/people" />
+                <img className="rounded-full" src="https://placeimg.com/80/80/people" />
               }
-            </div>
+            </Link>
           </label>
           }
         </ul>

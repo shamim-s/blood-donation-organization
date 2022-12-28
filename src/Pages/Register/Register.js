@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginBanner from "../.././Images/LoginImage1-01.svg";
 import Gicon from "../.././Images/Google.png";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import Spinner from "../../components/Spinner/Spinner";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { createNewUser, setUser, updateUser } = useContext(AuthContext);
   const { register, handleSubmit, reset, formState:{errors} } = useForm();
@@ -39,6 +40,7 @@ const Register = () => {
         updateUser(name)
           .then(() => {
             addUserToDB(addUser);
+            setUser(user);
           })
           .catch((err) => {
             console.log(err);
@@ -65,9 +67,9 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setUser(user);
         toast.success("Registration Success");
         setLoading(false);
+        navigate('/');
       });
   };
 
